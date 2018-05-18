@@ -356,16 +356,13 @@ following strings:
 
 ### `locale`
 
-The `locale` attribute allows tests to declare specific information regarding locale specificity.
-
-- **`tags`** A list of valid language tags or subtags found in this test. Use IANA Language Subtag Registry to validate.
+The `locale` attribute allows tests to declare explicit information regarding locale specificity. Its value is an array of one or more valid language tags or subtags.
 
   *Example*
 
   ```js
   /*---
-  locale: 
-    tags: [en, en-US, ar]
+  locale: [en, en-US, ar]
   ---*/
   
   var en = new Intl.PluralRules('en');
