@@ -353,3 +353,30 @@ following strings:
 - **`generated`** The test file was created procedurally using the project's
   test generation tool. This flag is specified for informational purposes only
   and has no bearing on how the test should be interpreted.
+
+### `locale`
+
+The `locale` attribute allows tests to declare specific information regarding locale specificity.
+
+- **`tags`** A list of valid language tags or subtags found in this test. Use IANA Language Subtag Registry to validate.
+
+  *Example*
+
+  ```js
+  /*---
+  locale: 
+    tags: [en, en-US, ar]
+  ---*/
+  
+  var en = new Intl.PluralRules('en');
+  assert.sameValue(en.select(1), 'one', 'en.select(1) returns "one"');
+  assert.sameValue(en.select(2), 'other', 'en.select(2) returns "other"');  
+
+  var enUS = new Intl.PluralRules('en-US');
+  assert.sameValue(enUS.select(1), 'one', 'enUS.select(1) returns "one"');
+  assert.sameValue(enUS.select(2), 'other', 'enUS.select(2) returns "other"');
+
+  var ar = new Intl.PluralRules('ar');
+  assert.sameValue(ar.select(1), 'one', 'ar.select(1) returns "one"');
+  assert.sameValue(ar.select(2), 'other', 'ar.select(2) returns "two"');
+  ```
